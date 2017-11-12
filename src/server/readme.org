@@ -1,0 +1,24 @@
+#+TITLE: Golang Web Server
+#+AUTHOR: Adam Schwartz
+#+DATE: November 11, 2017
+#+OPTIONS: ':true *:true toc:nil num:nil
+
+* Description
+This is a very simple web application written in [[https://golang.org/][Go]]. It has one job,
+to simulate the unpredictability of requests to a production
+webserver. To accomplish this, a Poisson pseudo-random number is
+generated for each incomming request and used to determine how long
+the server should sleep before sending a response.
+
+* Using app.go
+Compile and run:
+#+BEGIN_SRC text
+go build app.go
+./app
+#+END_SRC
+
+It's easy to launch many instances of the server on the same machine.
+#+BEGIN_SRC text
+./app --name=<server name> --lambda=<Poisson lambda> --addr=<IP address> --port=<port> &
+./app -h for help
+#+END_SRC

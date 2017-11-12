@@ -1,0 +1,40 @@
+#+TITLE: Nginx Load Balancing Modules
+#+AUTHOR: Adam Schwartz
+#+DATE: November 11, 2017
+#+OPTIONS: ':true *:true toc:nil num:nil
+
+* Setup
+The first thing we need to do is download the latest [[Nginx%20source][Nginx source]] into this directory:
+#+BEGIN_SRC text
+tar vxzf nginx-1.13.6.tar.gz
+#+END_SRC
+
+Now we have to modify =compile_and_load_modules.sh= and
+=add_modules_to_nginx.sh= so that the paths to the Nginx source and
+this directory are correct for your machine.
+
+Next, we have to configure and install Nginx to use the two-choices and random modules:
+#+BEGIN_SRC text
+./add_modules_to_nginx.sh
+#+END_SRC
+
+By default, we set Nginx to compile with debugging enabled for
+development. However, it is recommended to turn debugging off before
+running the simulation.
+#+BEGIN_SRC text
+./add_modules_to_nginx.sh off
+#+END_SRC
+
+Finally, if we make any changes to the modules, we can recompile with:
+#+BEGIN_SRC text
+./compile_and_load_modules.sh
+#+END_SRC
+
+* Useful Commands
+Sometimes, we will need to interact with Nginx directly from the
+command line. These are some good things to known:
+
+- start Nginx: =nginx=
+- stop Nginx: =nginx -s stop=
+- reload =nginx.conf=: =nginx -s reload=
+- force quit Nginx: =pkill -f nginx=

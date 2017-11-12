@@ -1,0 +1,18 @@
+#+TITLE: CS Capstone November 2017
+#+AUTHOR: Adam Schwartz
+#+DATE: November 11, 2017
+#+OPTIONS: ':true *:true toc:nil num:nil
+
+* Description
+This is the entry point to my Earlham College CS Capstone project.
+
+The aim of my research was to investigate the performance of
+innovative load balancing algorithms. This repository contains
+information for running my simulations along with all the source code.
+
+* More Information
+- [[file:simulations/][Simulations]]
+- [[file:src/nginx/][Nginx Source]]
+- [[file:src/server/][Golang Source]]
+
+* Conclusions

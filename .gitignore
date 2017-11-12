@@ -1,0 +1,7 @@
+# gitignore
+
+# ignore nginx source
+src/nginx/nginx-*
+
+# ignore go binary
+src/server/app
