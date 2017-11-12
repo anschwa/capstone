@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 After that, the notebook can be launched in the browser with the following command:
 #+BEGIN_SRC text
-jupyter notebook experimens.ipynb
+jupyter notebook experiments.ipynb
 #+END_SRC
 
 * Nginx and Apache Bench
@@ -27,14 +27,14 @@ Golang web application. Once everything is running, Apache Bench
 balancing algorithms.
 
 ** nginx.conf
-We have one =nginx.conf= for each load balancing strategy we are
+There is one =nginx.conf= for each load balancing strategy we are
 testing: random, round-robin, two-choices, and least_conn.
 
 There are also multiple Nginx configurations defined for testing the
 effects of increasing available servers.
 
 ** app.go
-We can launch as many servers as we would like to use from a single binary.
+You can launch as many servers as you need from a single binary.
 
 ** ab
 Apache Bench can be used to generate a csv containing the latency data
