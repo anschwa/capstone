@@ -4,4 +4,8 @@
 src/nginx/nginx-*
 
 # ignore go binary
+app
 src/server/app
+
+# misc
+simulations/.ipynb*

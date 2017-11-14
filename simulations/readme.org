@@ -54,5 +54,5 @@ There are two =gnuplot= scripts for plotting the data from =ab=.
 All of this information is configured in =setup.sh=, which will handle
 the entire simulation process.
 #+BEGIN_SRC text
-./setup.sh
+./setup.sh <random|round_robin|least_conn|two_choices> <1..8>
 #+END_SRC
