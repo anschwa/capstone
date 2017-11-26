@@ -12,7 +12,10 @@ simulations/ab_data/*/*-*.tsv
 simulations/logs/simulation-*.log
 
 simulations/plots/*
-! simulations/plots/interesting.png
+
+# only include the plots we want
+!simulations/plots/interesting.png
+!simulations/plots/A
 
 # misc
 simulations/.ipynb*

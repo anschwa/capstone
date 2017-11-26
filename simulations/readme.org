@@ -8,7 +8,7 @@ The IPython notebook contains my initial environment for exploring
 various load balancing strategies. I recommend that you set up a
 python virtual environment and install the python dependencies.
 
-All you need is =IPython=, =numpy=, and =matplotlib=, but you can also
+All you need is =jupyter=, =numpy=, and =matplotlib=, but you can also
 grab everything from running:
 #+BEGIN_SRC text
 pip install -r requirements.txt
