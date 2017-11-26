@@ -1,6 +1,6 @@
 # (re)compile and load my module into nginx
 
-cd "nginx-1.13.6"
+cd "$HOME/nginx-1.13.7"
 make modules
 echo "cp modules"
 cp objs/ngx_http_upstream_random_module.so /usr/local/nginx/modules/ngx_http_upstream_random_module.so

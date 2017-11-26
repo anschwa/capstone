@@ -12,6 +12,9 @@ information for running my simulations along with all the source code.
 
 [[file:simulations/plots/interesting.png]]
 
+* Prerequisites
+** 
+
 * Running the Simulation
 Executing the =setup.sh= script will setup and run a load balancing
 simulation using Go, Nginx, Apache Bench, and Gnuplot. All you need to
@@ -42,7 +45,8 @@ nginx -s stop
 pkill -f "./app -name"  # be careful with using pkill -f
 #+END_SRC
 
+
 * More Information
 - [[file:simulations/][Simulations]]
-- [[file:src/nginx/][Nginx Source]]
-- [[file:src/server/][Golang Source]]
+- [[file:src/nginx/][Nginx Modules]]
+- [[file:src/server/][Go Webserver]]

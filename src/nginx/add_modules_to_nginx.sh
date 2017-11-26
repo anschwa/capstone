@@ -1,17 +1,17 @@
 # compile my module into nginx
                                                
-random="/Users/schwa/nginx/ngx_random"
-twochoices="/Users/schwa/nginx/ngx_two_choices"
+random="$HOME/Desktop/capstone/src/nginx/ngx_random"
+twochoices="$HOME/Desktop/capstone/src/nginx/ngx_two_choices"
 
-cd "nginx-1.13.6"
+cd "$HOME/nginx-1.13.7"
 make clean
 
-if [ $1 = "off" ]; then
+if [ $1 = "on" ]; then
     echo "configure Nginx for production..."
-    ./configure --with-compat --add-dynamic-module=$random --add-dynamic-module=$twochoices
+    ./configure --with-debug --with-compat --add-dynamic-module=$random --add-dynamic-module=$twochoices
 else
     echo "configure Nginx with debugging..."
-    ./configure --with-debug --with-compat --add-dynamic-module=$random --add-dynamic-module=$twochoices
+    ./configure --with-compat --add-dynamic-module=$random --add-dynamic-module=$twochoices
 fi
 
 make && make install

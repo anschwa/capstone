@@ -13,3 +13,4 @@ simulations/logs/simulation-*.log
 
 # misc
 simulations/.ipynb*
+.DS_Store
