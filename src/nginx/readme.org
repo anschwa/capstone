@@ -4,12 +4,12 @@
 #+OPTIONS: ':true *:true toc:nil num:nil
 
 * Setup
-The first thing you need to do is download the latest [[https://nginx.org/en/download.html][Nginx source]] into this directory:
+The first thing you need to do is download the latest [[https://nginx.org/en/download.html][Nginx source]]
+into this directory. You may also have to install the infamous =pcre=
+library before compiling Nginx.
 #+BEGIN_SRC text
 tar vxzf nginx-1.13.6.tar.gz
 #+END_SRC
-
-You may also have to install the infamous =pcre= library before compiling Nginx.
 
 Then modify =compile_and_load_modules.sh= and
 =add_modules_to_nginx.sh= so that the paths to the Nginx source and
