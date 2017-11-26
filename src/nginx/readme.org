@@ -8,30 +8,25 @@ The first thing you need to do is download the latest [[https://nginx.org/en/dow
 into this directory. You may also have to install the infamous =pcre=
 library before compiling Nginx.
 #+BEGIN_SRC text
-tar vxzf nginx-1.13.6.tar.gz
+tar vxzf nginx-1.13.7.tar.gz
 #+END_SRC
 
 Then modify =compile_and_load_modules.sh= and
-=add_modules_to_nginx.sh= so that the paths to the Nginx source and
-this directory are correct for your machine.
+=install_nginx_with_modules.sh= so that the paths to the Nginx source and
+this repository are correct for your machine.
 
-Next, configure and install Nginx to use the two-choices and random modules:
+Next, configure and install Nginx to use the two-choices and random
+modules: It's possible that Nginx will insist on being installed by
+the superuser, in which case you will need to either run all scripts
+in this repository as root, or grant privilages to =/usr/local/nginx/=.
 #+BEGIN_SRC text
-./add_modules_to_nginx.sh  # may need sudo on the first run
+./install_nginx_with_modules.sh
 #+END_SRC
 
-By default, Nginx is set to compile without debugging enabled.
-However, for development it is recommended to turn debugging on. It's
-possible that Nginx will insist on being installed by the superuser, in
-which case you will need to either run all scripts in this repository
-as root, or grant privilages to =/usr/local/nginx/=.
+By default, Nginx is set to compile without debugging.
+However, for development you will likely want it enabled. 
 #+BEGIN_SRC text
 ./add_modules_to_nginx.sh on
-#+END_SRC
-
-You may want to add the =nginx= binary to your path:
-#+BEGIN_SRC text
-export PATH=/usr/local/nginx/sbin:${PATH}
 #+END_SRC
 
 Finally, if any changes are made to the modules, you can recompile with:
@@ -39,9 +34,14 @@ Finally, if any changes are made to the modules, you can recompile with:
 ./compile_and_load_modules.sh
 #+END_SRC
 
+You may need to add the =nginx= binary to your path:
+#+BEGIN_SRC text
+export PATH=/usr/local/nginx/sbin:${PATH}
+#+END_SRC
+
 * Useful Commands
 Sometimes, you will need to interact with Nginx directly from the
-command line. These are some good things to known:
+command line. These are some good things to know:
 
 - start Nginx: =nginx=
 - stop Nginx: =nginx -s stop=
