@@ -1,0 +1,69 @@
+Load Balancing Simulation Log File
+Servers: 4. Total Requests: 1000. Concurrent Requests: 1.
+--------------------------------------------------------------------------------
+generating nginx.conf...
+launching nginx...
+testing nginx configuration...
+nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
+launching 1 servers...
+./app -name 1 -port 8081 &
+Benchmarking to ab_data/control//control.tsv...
+2017/11/25 20:03:17 ListenAndServe: listen tcp 127.0.0.1:8081: bind: address already in use
+This is ApacheBench, Version 2.3 <$Revision: 1796539 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        nginx/1.13.6
+Server Hostname:        127.0.0.1
+Server Port:            8080
+
+Document Path:          /
+Document Length:        37 bytes
+
+Concurrency Level:      1
+Time taken for tests:   98.081 seconds
+Complete requests:      1000
+Failed requests:        607
+   (Connect: 0, Receive: 0, Length: 607, Exceptions: 0)
+Total transferred:      195214 bytes
+HTML transferred:       38214 bytes
+Requests per second:    10.20 [#/sec] (mean)
+Time per request:       98.081 [ms] (mean)
+Time per request:       98.081 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.94 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.3      0       5
+Processing:     1   98 102.0    103     604
+Waiting:        1   98 102.0    103     604
+Total:          1   98 102.0    103     604
+
+Percentage of the requests served within a certain time (ms)
+  50%    103
+  66%    106
+  75%    107
+  80%    203
+  90%    207
+  95%    306
+  98%    402
+  99%    406
+ 100%    604 (longest request)
+killing all running webservers...
+stopping nginx...
+done.

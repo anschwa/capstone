@@ -10,9 +10,24 @@ The aim of my research was to investigate the performance of
 innovative load balancing algorithms. This repository contains
 information for running my simulations along with all the source code.
 
+[[file:simulations/plots/interesting.png]]
+
+* Running the Simulation
+Executing the =setup.sh= script will setup and run a load balancing
+simulation using Go, Nginx, Apache Bench, and Gnuplot. All you need to
+provide is the number of webservers to launch, total requests to
+benchmark, and number of concurrent requests allowed.
+
+#+BEGIN_SRC text
+./setup.sh <servers: 1..8> <requests> <concurrent>
+#+END_SRC
+
+There is a detailed log file generated in =simulations/logs/= after
+each execution of =setup.sh=. If all goes well, the script will
+generate a new graph in =simulations/plots/= with the simulation
+results.
+
 * More Information
 - [[file:simulations/][Simulations]]
 - [[file:src/nginx/][Nginx Source]]
 - [[file:src/server/][Golang Source]]
-
-* Conclusions

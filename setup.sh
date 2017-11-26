@@ -1,86 +1,73 @@
 #!/usr/bin/env bash
 
-# Setup and configure load balancing simulation through Nginx
+# setup and run a load balancing simulation using Go, Nginx, Apache Bench, and Gnuplot
 
-if [ $# -lt 4 ]; then
-    echo "Usage: ./setup.sh <random|round_robin|least_conn|two_choices> <servers: 1..8> <requests> <concurrent>"
+if [ $# -lt 3 ]; then
+    echo "Usage: ./setup.sh <servers: 1..8> <requests> <concurrent>"
     exit 1
 fi
 
-if [ $2 -gt 8 ]; then
+if [ $1 -gt 8 ]; then
     echo "Error: you can only launch up to 8 servers"
     exit 1
 fi
 
-ALGORITHM=$1
-SERVERS=$2
+SERVERS=$1
+REQUESTS=$2
+CONCURRENT=$3
 
-# path to nginx.conf
-NGINX="/usr/local/nginx/conf/nginx.conf"
-
-TOTAL_REQUESTS=$3
-CONCURRENT_REQUESTS=$4
-
-# for gnuplot      
-DATA_DIR="simulations/ab_data/$ALGORITHM/"
-PLOT_DIR="simulations/plots/$ALGORITHM/"
-
-for x in random round_robin least_conn two_choices; do
-    mkdir -p "simulations/ab_data/$x"
-    mkdir -p "simulations/plots/$x"
-done
-
-################################################################################
-
-echo "generating nginx.conf..."
-./simulations/nginx.conf.sh $ALGORITHM $SERVERS > "$NGINX" || exit 1
-
-echo "launching nginx..."
-nginx || exit 1
-
-echo "testing nginx configuration..."
-nginx -t || exit 1
-
-# reload
-nginx -s reload || exit 1
-
-################################################################################
-
-# Launch webservers
-if [ ! -x "app" ]; then
+if [ ! -x "simulations/app" ]; then
     echo "building webserver..."
-    go build src/server/app.go || exit 1
+    go build -o simulations/app src/server/app.go || exit 1
+else    
+    echo "webserver is already built"
 fi
 
-echo "launching $SERVERS servers..."
-for x in `seq 1 $SERVERS`; do
-    echo "./app -name $x -port 808$x &"
-    ./app -name $x -port 808$x &
-done
+path=$(pwd)
+cd simulations/
+
+# backup existing log file
+log="logs/simulation.log"
+log_bak="logs/simulation-$(date +%s).log"
+
+if [ -e "$log" ]; then
+    mv "$log" "$log_bak"
+fi
+
+# create a new log file
+echo "Load Balancing Simulation Log File" > "$log"
+echo "Servers: $SERVERS. Total Requests: $REQUESTS. Concurrent Requests: $CONCURRENT." >> "$log"
+echo "--------------------------------------------------------------------------------" >> "$log"
+
+function error {
+    echo "Error: Check simulations/logs/simulation.log"
+    exit 1
+}
 
 ################################################################################
 
-# use apache bench to benchmark server performance
-ab_output="$DATA_DIR/$(date +%s).tsv"
+echo "Establishing a control (only 1 server)..."
+./get_data.sh control 1 "$REQUESTS" "$CONCURRENT" &>> "$log" || error
 
-echo "Benchmarking to $ab_output..."
-sleep 2
+echo "Benchmarking round_robin..."
+./get_data.sh round_robin "$SERVERS" "$REQUESTS" "$CONCURRENT" &>> "$log" || error
 
-ab -n $TOTAL_REQUESTS -c $CONCURRENT_REQUESTS -g $ab_output http://127.0.0.1:8080/ || exit 1
+echo "Benchmarking least_conn..."
+./get_data.sh least_conn "$SERVERS" "$REQUESTS" "$CONCURRENT" &>> "$log" || error
 
-################################################################################
+echo "Benchmarking random..."
+./get_data.sh random "$SERVERS" "$REQUESTS" "$CONCURRENT" &>> "$log" || error
 
-echo "killing all running webservers..."
-pkill -f "./app -name" || exit 1
-
-echo "stopping nginx..."
-nginx -s stop || exit 1
-
-################################################################################
-
-echo "setting up gnuplot"
-./simulations/make_plots.sh "$DATA_DIR" "$PLOT_DIR" "$ALGORITHM" "$SERVERS" "$CONCURRENT_REQUESTS"
+echo "Benchmarking two_choices..."
+./get_data.sh two_choices "$SERVERS" "$REQUESTS" "$CONCURRENT" &>> "$log" || error
 
 ################################################################################
 
-echo "done."
+echo "Creating plot..."
+./make_plot.sh "$SERVERS" "$REQUESTS" "$CONCURRENT" &>> "$log" || error
+
+################################################################################
+
+cd "$path"
+
+echo "Done. You can examine simulations/logs/ for more information."

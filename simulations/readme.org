@@ -34,25 +34,45 @@ There are also multiple Nginx configurations defined for testing the
 effects of increasing available servers.
 
 ** app.go
-You can launch as many servers as you need from a single binary.
+You can launch as many servers as you need from a single binary. See [[file:~/Documents/Earlham/Earlham%202018/Fall%20Semester/Senior%20Capstone/repository/capstone/src/server/][app.go source]].
 
 ** ab
-Apache Bench can be used to generate a csv containing the latency data
+Apache Bench can be used to generate a tsv containing the latency data
 from each request:
 #+BEGIN_SRC text
 ab -n 100 -c 10 -g data.tsv http://127.0.0.1:8080/
 #+END_SRC
 
-** gnuplot
-There are two =gnuplot= scripts for plotting the data from =ab=.
+The script =get_data.sh= will gather benchmarking data for a specific
+load balancing algorithm, launch the webservers, and configure Nginx.
+
 #+BEGIN_SRC text
-# gnuplot plots/lines.gnuplot
-# gnuplot plots/points.gnuplot
+./get_data.sh <random|round_robin|least_conn|two_choices|control> <servers: 1..8> <requests> <concurrent>
 #+END_SRC
 
-** setup.sh
-All of this information is configured in =setup.sh=, which will handle
-the entire simulation process.
 #+BEGIN_SRC text
-./setup.sh <random|round_robin|least_conn|two_choices> <1..8>
+# output from running get_data.sh
+simulations/
+├── ab_data
+    ├── control
+    |   └── control.tsv
+    ├── round_robin
+    |   └── round_robin.tsv
+    ├── least_conn
+    |   └── least_conn.tsv
+    ├── random
+    |   └── random.tsv
+    └── two_choices.tsv
+        └── two_choices.tsv
+#+END_SRC
+
+** gnuplot
+The =make_plot.sh= script uses gnuplot to create a single graph
+comparing the performance of all Nginx load balancing algorithms. The
+script depends on having a collection of tsv's already generated in
+the appropriate directories (i.e., run =get_data.sh= first).
+
+#+BEGIN_SRC text
+# server and request information needed to write the title and axis labels
+/make_plot.sh <servers> <requests> <concurrency>
 #+END_SRC

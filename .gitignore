@@ -4,7 +4,7 @@
 src/nginx/nginx-*
 
 # ignore go binary
-app
+simulations/app
 src/server/app
 
 # misc

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # generate an nginx.conf with the correct settings
-# usage: ./nginx.conf.sh <random|round_robin|least_conn|two_choices> <number of servers>
+# usage: ./nginx.conf.sh <random|round_robin|least_conn|two_choices|control> <number of servers>
 
-if [ "$1" = "round_robin" ]; then
+if [ "$1" = "round_robin" ] || [ "$1" = "control" ]; then
     ALGORITHM=""
 else
   ALGORITHM="$1;"
