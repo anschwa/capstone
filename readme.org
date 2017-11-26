@@ -12,8 +12,10 @@ information for running my simulations along with all the source code.
 
 [[file:simulations/plots/interesting.png]]
 
-* Prerequisites
-** 
+* Dependencies
+- gnuplot
+- nginx (see [[file:src/nginx/readme.org][compiling nginx]])
+- IPyton or Jupyter
 
 * Running the Simulation
 Executing the =setup.sh= script will setup and run a load balancing
