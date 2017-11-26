@@ -74,5 +74,9 @@ the appropriate directories (i.e., run =get_data.sh= first).
 
 #+BEGIN_SRC text
 # server and request information needed to write the title and axis labels
-/make_plot.sh <servers> <requests> <concurrency>
+./make_plot.sh <servers> <requests> <concurrency>
 #+END_SRC
+
+By default, the =make_plot.sh= script will plot every available load
+balancer in Nginx. If you only want a specific set of algorithms,
+simply comment out the unwanted ones from the gnuplot script.
