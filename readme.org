@@ -27,6 +27,21 @@ each execution of =setup.sh=. If all goes well, the script will
 generate a new graph in =simulations/plots/= with the simulation
 results.
 
+** Troubleshooting 
+If something goes wrong when running the simulation or any other
+script, make sure that the Nginx and all websevers are no longer
+running.
+
+#+BEGIN_SRC text
+# check if process is running
+ps aux | grep [n]ginx
+ps aux | grep "./app -name"
+
+# kill processes 
+nginx -s stop
+pkill -f "./app -name"  # be careful with using pkill -f
+#+END_SRC
+
 * More Information
 - [[file:simulations/][Simulations]]
 - [[file:src/nginx/][Nginx Source]]

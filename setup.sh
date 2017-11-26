@@ -12,6 +12,8 @@ if [ $1 -gt 8 ]; then
     exit 1
 fi
 
+echo "Starting Simulation..."
+
 SERVERS=$1
 REQUESTS=$2
 CONCURRENT=$3
@@ -19,8 +21,6 @@ CONCURRENT=$3
 if [ ! -x "simulations/app" ]; then
     echo "building webserver..."
     go build -o simulations/app src/server/app.go || exit 1
-else    
-    echo "webserver is already built"
 fi
 
 path=$(pwd)

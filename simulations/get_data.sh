@@ -70,7 +70,7 @@ fi
 echo "Benchmarking to $ab_output..."
 sleep 2
 
-ab -n $TOTAL_REQUESTS -c $CONCURRENT_REQUESTS -g $ab_output http://127.0.0.1:8080/ || exit 1
+ab -n $TOTAL_REQUESTS -c $CONCURRENT_REQUESTS -g $ab_output -s 120 http://127.0.0.1:8080/ || exit 1
 
 ################################################################################
 
