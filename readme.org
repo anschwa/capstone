@@ -14,15 +14,15 @@ information for running my simulations along with all the source code.
 
 * Dependencies
 - gnuplot
-- nginx (see [[file:src/nginx/readme.org][compiling nginx]])
-- IPyton or Jupyter
+- nginx (see [[file:src/nginx/readme.org][my Nginx readme]])
+- Go ([[https://golang.org/]])
+- IPython or Jupyter
 
 * Running the Simulation
 Executing the =setup.sh= script will setup and run a load balancing
 simulation using Go, Nginx, Apache Bench, and Gnuplot. All you need to
 provide is the number of webservers to launch, total requests to
 benchmark, and number of concurrent requests allowed.
-
 #+BEGIN_SRC text
 ./setup.sh <servers: 1..8> <requests> <concurrent>
 #+END_SRC
@@ -32,7 +32,18 @@ each execution of =setup.sh=. If all goes well, the script will
 generate a new graph in =simulations/plots/= with the simulation
 results.
 
-** Troubleshooting 
+For the best performance, you should recompile Nginx with debugging
+turned off (see [[file:src/nginx/readme.org][my Nginx readme]]).
+
+** Running multiple simulations
+The =run_all.sh= script provides an example for executing as many
+simulations as one would like. It may run for a while, so consider
+using =nohup=.
+#+BEGIN_SRC text
+nohup ./run_all.sh &
+#+END_SRC
+
+** Troubleshooting
 If something goes wrong when running the simulation or any other
 script, make sure that the Nginx and all websevers are no longer
 running.
@@ -42,13 +53,13 @@ running.
 ps aux | grep [n]ginx
 ps aux | grep "./app -name"
 
-# kill processes 
+# kill processes
 nginx -s stop
 pkill -f "./app -name"  # be careful with using pkill -f
 #+END_SRC
 
 
-* More Information
+* More information about this repository
 - [[file:simulations/][Simulations]]
 - [[file:src/nginx/][Nginx Modules]]
 - [[file:src/server/][Go Webserver]]
