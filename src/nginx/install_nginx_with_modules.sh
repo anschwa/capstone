@@ -1,5 +1,6 @@
+#!/usr/bin/env bash
 # compile my module into nginx
-                                               
+
 random="$HOME/Desktop/capstone/src/nginx/ngx_random"
 twochoices="$HOME/Desktop/capstone/src/nginx/ngx_two_choices"
 

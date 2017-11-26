@@ -13,18 +13,20 @@ information for running my simulations along with all the source code.
 [[file:simulations/plots/interesting.png]]
 
 * Dependencies
+- bash
 - gnuplot
-- nginx (see [[file:src/nginx/readme.org][my Nginx readme]])
 - Go ([[https://golang.org/]])
-- IPython or Jupyter
+- Nginx (see [[file:src/nginx/readme.org][my Nginx readme]])
+- Optional: IPython or Jupyter
 
 * Running the Simulation
 Executing the =setup.sh= script will setup and run a load balancing
 simulation using Go, Nginx, Apache Bench, and Gnuplot. All you need to
 provide is the number of webservers to launch, total requests to
-benchmark, and number of concurrent requests allowed.
+benchmark, and number of concurrent requests allowed. You can also
+specify the directory the plot will be generated in (default is =simulations/plots/=).
 #+BEGIN_SRC text
-./setup.sh <servers: 1..8> <requests> <concurrent>
+./setup.sh <servers: 1..8> <requests> <concurrent> [plot directory]
 #+END_SRC
 
 There is a detailed log file generated in =simulations/logs/= after
@@ -36,11 +38,12 @@ For the best performance, you should recompile Nginx with debugging
 turned off (see [[file:src/nginx/readme.org][my Nginx readme]]).
 
 ** Running multiple simulations
-The =run_all.sh= script provides an example for executing as many
+The =run_sims.sh= script provides an example for executing as many
 simulations as one would like. It may run for a while, so consider
 using =nohup=.
 #+BEGIN_SRC text
-nohup ./run_all.sh &
+nohup ./run_sims.sh &
+tail -f nohup.out
 #+END_SRC
 
 ** Troubleshooting

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # (re)compile and load my module into nginx
 
 cd "$HOME/nginx-1.13.7"

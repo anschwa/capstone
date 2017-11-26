@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # generate an nginx.conf with the correct settings
 # usage: ./nginx.conf.sh <random|round_robin|least_conn|two_choices|control> <number of servers>
 

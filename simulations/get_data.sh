@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # gather benchmarking data for all load balancing algorithms, launch the webservers, and configure Nginx
 
 if [ $# -lt 4 ]; then

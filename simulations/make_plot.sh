@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
-
 # turn all the load balancing data files into a single plot
 
-SER=$1
-REQ=$2
-CON=$3
+SER="$1"
+REQ="$2"
+CON="$3"
+DIR="$4"
 
-if [ $# -lt 3 ]; then
-    echo "usage: ./make_plot.sh <servers> <requests> <concurrency>"
+if [ $# -lt 4 ]; then
+    echo "usage: ./make_plot.sh <servers> <requests> <concurrency> <plot directory>"
     exit 1
 fi
 
+################################################################################
+
 echo "plotting all data files..."
 
-plt="plots/nginx-$(date +%s).png"
+plt="$DIR/nginx-$(date +%s).png"
 
 # turn gnuplot x-axis to percentage
 xval="((\$0/"$REQ")*100)"
