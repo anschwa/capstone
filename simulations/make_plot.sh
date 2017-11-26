@@ -40,6 +40,8 @@ gnuplot <<EOF
     "ab_data/least_conn/least_conn.tsv" every ::2 using $xval:5 title "least_conn" with lines, \
     "ab_data/random/random.tsv" every ::2 using $xval:5 title "random" with lines, \
     "ab_data/two_choices/two_choices.tsv" every ::2 using $xval:5 title "two_choices" with lines
+    
+    unset output
 EOF
 
 echo "saved $plt"

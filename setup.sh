@@ -2,7 +2,7 @@
 
 # setup and run a load balancing simulation using Go, Nginx, Apache Bench, and Gnuplot
 
-if [ $# -lt 4 ]; then
+if [ $# -lt 3 ]; then
     echo "Usage: ./setup.sh <servers: 1..8> <requests> <concurrent> [plot directory]"
     echo "example: ./setup.sh 4 1000 10 simulation/plots/trialA/"
     echo "the default plot output directory is simulations/plots/"
@@ -24,20 +24,20 @@ PLOT_DIR="$4"
 echo "$SERVERS servers, $REQUESTS total requests, $CONCURRENT concurrent"
 echo "Starting Simulation..."
 
-# set default plot directory if none is specified
-if [ $# -eq 3 ]; then
-    DIR="plots"
-else
-    mkdir -p $PLOT_DIR || exit 1
-fi
-
 if [ ! -x "simulations/app" ]; then
     echo "building webserver..."
     go build -o simulations/app src/server/app.go || exit 1
 fi
 
 path=$(pwd)
-cd simulations/
+cd "simulations/"
+
+# set default plot directory if none is specified
+if [ "$PLOT_DIR" = "" ]; then
+    PLOT_DIR="plots/"
+else
+    mkdir -p $PLOT_DIR || exit 1
+fi
 
 # backup existing log file
 log="logs/simulation.log"
@@ -76,7 +76,7 @@ echo "Benchmarking two_choices..."
 
 ################################################################################
 
-echo "Creating plot..."
+echo "Creating plot in '$PLOT_DIR'..."
 ./make_plot.sh "$SERVERS" "$REQUESTS" "$CONCURRENT" "$PLOT_DIR" &>> "$log" || error
 
 ################################################################################

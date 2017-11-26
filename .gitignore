@@ -10,7 +10,9 @@ src/server/app
 # ignore simulation files
 simulations/ab_data/*/*-*.tsv
 simulations/logs/simulation-*.log
-simulations/plots/plot_archive
+
+simulations/plots/*
+! simulations/plots/interesting.png
 
 # misc
 simulations/.ipynb*
