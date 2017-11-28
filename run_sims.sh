@@ -13,9 +13,9 @@ function run_sim {
 
 # this should be enough data to draw some conclusions from
 
-PLOT_DIR="$HOME/Desktop/capstone/simulations/plots/C"
+PLOT_DIR="$HOME/Desktop/capstone/simulations/plots/E"
 
-for req in 1000 5000; do
+for req in 500 1000; do
     for con in 10 50 100; do
         run_sim 4 $req $con $PLOT_DIR
         run_sim 8 $req $con $PLOT_DIR

@@ -11,12 +11,6 @@ src/server/app
 simulations/ab_data/*/*-*.tsv
 simulations/logs/simulation-*.log
 
-simulations/plots/*
-
-# only include the plots we want
-!simulations/plots/interesting.png
-!simulations/plots/A
-
 # misc
 nohup.out
 simulations/.ipynb*
