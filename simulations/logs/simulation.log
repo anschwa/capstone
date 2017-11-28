@@ -1,5 +1,5 @@
 Load Balancing Simulation Log File
-Servers: 8. Total Requests: 1000. Concurrent Requests: 100.
+Servers: 4. Total Requests: 5000. Concurrent Requests: 50.
 --------------------------------------------------------------------------------
 generating nginx.conf...
 launching nginx...
@@ -14,17 +14,17 @@ Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
 Benchmarking 127.0.0.1 (be patient)
-Completed 100 requests
-Completed 200 requests
-Completed 300 requests
-Completed 400 requests
 Completed 500 requests
-Completed 600 requests
-Completed 700 requests
-Completed 800 requests
-Completed 900 requests
 Completed 1000 requests
-Finished 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
 
 
 Server Software:        nginx/1.13.7
@@ -34,70 +34,66 @@ Server Port:            8080
 Document Path:          /
 Document Length:        37 bytes
 
-Concurrency Level:      100
-Time taken for tests:   1.499 seconds
-Complete requests:      1000
-Failed requests:        641
-   (Connect: 0, Receive: 0, Length: 641, Exceptions: 0)
-Total transferred:      195282 bytes
-HTML transferred:       38282 bytes
-Requests per second:    667.05 [#/sec] (mean)
-Time per request:       149.913 [ms] (mean)
-Time per request:       1.499 [ms] (mean, across all concurrent requests)
-Transfer rate:          127.21 [Kbytes/sec] received
+Concurrency Level:      50
+Time taken for tests:   10.521 seconds
+Complete requests:      5000
+Failed requests:        3137
+   (Connect: 0, Receive: 0, Length: 3137, Exceptions: 0)
+Total transferred:      976274 bytes
+HTML transferred:       191274 bytes
+Requests per second:    475.25 [#/sec] (mean)
+Time per request:       105.208 [ms] (mean)
+Time per request:       2.104 [ms] (mean, across all concurrent requests)
+Transfer rate:          90.62 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    5   6.4      3      39
-Processing:     1  118 102.6    108     516
-Waiting:        1  118 102.6    108     516
-Total:          1  123 103.7    111     533
+Connect:        0    1   0.9      1       9
+Processing:     0  102 100.2    102     627
+Waiting:        0  102 100.2    102     627
+Total:          0  103 100.2    103     627
 
 Percentage of the requests served within a certain time (ms)
-  50%    111
-  66%    123
-  75%    208
-  80%    211
-  90%    280
-  95%    311
-  98%    406
-  99%    421
- 100%    533 (longest request)
+  50%    103
+  66%    107
+  75%    201
+  80%    203
+  90%    211
+  95%    305
+  98%    322
+  99%    405
+ 100%    627 (longest request)
 killing all running webservers...
 stopping nginx...
-./get_data.sh: line 80: 86863 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 80:  1830 Terminated: 15          ./app -name $x -port 808$x
 done.
 generating nginx.conf...
 launching nginx...
 testing nginx configuration...
 nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
 nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-launching 8 servers...
+launching 4 servers...
 ./app -name 1 -port 8081 &
 ./app -name 2 -port 8082 &
 ./app -name 3 -port 8083 &
 ./app -name 4 -port 8084 &
-./app -name 5 -port 8085 &
-./app -name 6 -port 8086 &
-./app -name 7 -port 8087 &
-./app -name 8 -port 8088 &
 Benchmarking to ab_data/round_robin//round_robin.tsv...
 This is ApacheBench, Version 2.3 <$Revision: 1796539 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
 Benchmarking 127.0.0.1 (be patient)
-Completed 100 requests
-Completed 200 requests
-Completed 300 requests
-Completed 400 requests
 Completed 500 requests
-Completed 600 requests
-Completed 700 requests
-Completed 800 requests
-Completed 900 requests
 Completed 1000 requests
-Finished 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
 
 
 Server Software:        nginx/1.13.7
@@ -107,44 +103,40 @@ Server Port:            8080
 Document Path:          /
 Document Length:        37 bytes
 
-Concurrency Level:      100
-Time taken for tests:   2.112 seconds
-Complete requests:      1000
-Failed requests:        630
-   (Connect: 0, Receive: 0, Length: 630, Exceptions: 0)
-Total transferred:      195260 bytes
-HTML transferred:       38260 bytes
-Requests per second:    473.48 [#/sec] (mean)
-Time per request:       211.201 [ms] (mean)
-Time per request:       2.112 [ms] (mean, across all concurrent requests)
-Transfer rate:          90.29 [Kbytes/sec] received
+Concurrency Level:      50
+Time taken for tests:   34.598 seconds
+Complete requests:      5000
+Failed requests:        3090
+   (Connect: 0, Receive: 0, Length: 3090, Exceptions: 0)
+Total transferred:      976180 bytes
+HTML transferred:       191180 bytes
+Requests per second:    144.52 [#/sec] (mean)
+Time per request:       345.984 [ms] (mean)
+Time per request:       6.920 [ms] (mean, across all concurrent requests)
+Transfer rate:          27.55 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        1   22   8.9     22      72
-Processing:    16  161  98.0    157     554
-Waiting:       16  161  98.0    157     554
-Total:         27  183  99.1    179     578
+Connect:        0  199 1479.2      1   19800
+Processing:     0  144 675.1    104   15220
+Waiting:        0  144 675.1    104   15220
+Total:          0  344 1626.9    106   20096
 
 Percentage of the requests served within a certain time (ms)
-  50%    179
-  66%    194
-  75%    260
-  80%    278
-  90%    299
-  95%    380
-  98%    394
-  99%    482
- 100%    578 (longest request)
+  50%    106
+  66%    123
+  75%    206
+  80%    210
+  90%    310
+  95%    787
+  98%   2204
+  99%  13275
+ 100%  20096 (longest request)
 killing all running webservers...
-./get_data.sh: line 78: 86885 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86886 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86887 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86888 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86889 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86890 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86891 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86892 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1862 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1863 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1864 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1865 Terminated: 15          ./app -name $x -port 808$x
 stopping nginx...
 done.
 generating nginx.conf...
@@ -152,32 +144,28 @@ launching nginx...
 testing nginx configuration...
 nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
 nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-launching 8 servers...
+launching 4 servers...
 ./app -name 1 -port 8081 &
 ./app -name 2 -port 8082 &
 ./app -name 3 -port 8083 &
 ./app -name 4 -port 8084 &
-./app -name 5 -port 8085 &
-./app -name 6 -port 8086 &
-./app -name 7 -port 8087 &
-./app -name 8 -port 8088 &
 Benchmarking to ab_data/least_conn//least_conn.tsv...
 This is ApacheBench, Version 2.3 <$Revision: 1796539 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
 Benchmarking 127.0.0.1 (be patient)
-Completed 100 requests
-Completed 200 requests
-Completed 300 requests
-Completed 400 requests
 Completed 500 requests
-Completed 600 requests
-Completed 700 requests
-Completed 800 requests
-Completed 900 requests
 Completed 1000 requests
-Finished 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
 
 
 Server Software:        nginx/1.13.7
@@ -187,205 +175,60 @@ Server Port:            8080
 Document Path:          /
 Document Length:        37 bytes
 
-Concurrency Level:      100
-Time taken for tests:   2.759 seconds
-Complete requests:      1000
-Failed requests:        608
-   (Connect: 0, Receive: 0, Length: 608, Exceptions: 0)
-Total transferred:      195216 bytes
-HTML transferred:       38216 bytes
-Requests per second:    362.48 [#/sec] (mean)
-Time per request:       275.880 [ms] (mean)
-Time per request:       2.759 [ms] (mean, across all concurrent requests)
-Transfer rate:          69.10 [Kbytes/sec] received
+Concurrency Level:      50
+Time taken for tests:   12.782 seconds
+Complete requests:      5000
+Failed requests:        3195
+   (Connect: 0, Receive: 0, Length: 3195, Exceptions: 0)
+Total transferred:      976390 bytes
+HTML transferred:       191390 bytes
+Requests per second:    391.16 [#/sec] (mean)
+Time per request:       127.824 [ms] (mean)
+Time per request:       2.556 [ms] (mean, across all concurrent requests)
+Transfer rate:          74.60 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        3   27  82.9     11     842
-Processing:     7  231 273.8    132    1319
-Waiting:        7  231 273.8    131    1319
-Total:         15  258 292.3    145    1372
+Connect:        0    2   1.5      1      17
+Processing:     0  124 194.7    104    1997
+Waiting:        0  124 194.6    104    1997
+Total:          1  125 194.7    105    2000
 
 Percentage of the requests served within a certain time (ms)
-  50%    145
-  66%    239
-  75%    289
-  80%    350
-  90%    914
-  95%   1039
-  98%   1102
-  99%   1142
- 100%   1372 (longest request)
+  50%    105
+  66%    111
+  75%    203
+  80%    206
+  90%    217
+  95%    310
+  98%    411
+  99%   1654
+ 100%   2000 (longest request)
 killing all running webservers...
-./get_data.sh: line 78: 86917 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86918 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86919 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86921 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86922 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1915 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1916 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1917 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 78:  1918 Terminated: 15          ./app -name $x -port 808$x
 stopping nginx...
-./get_data.sh: line 80: 86915 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 80: 86916 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 80: 86920 Terminated: 15          ./app -name $x -port 808$x
 done.
 generating nginx.conf...
 launching nginx...
 testing nginx configuration...
 nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
 nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-launching 8 servers...
+launching 4 servers...
 ./app -name 1 -port 8081 &
 ./app -name 2 -port 8082 &
 ./app -name 3 -port 8083 &
 ./app -name 4 -port 8084 &
-./app -name 5 -port 8085 &
-./app -name 6 -port 8086 &
-./app -name 7 -port 8087 &
-./app -name 8 -port 8088 &
 Benchmarking to ab_data/random//random.tsv...
 This is ApacheBench, Version 2.3 <$Revision: 1796539 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
 Benchmarking 127.0.0.1 (be patient)
-Completed 100 requests
-Completed 200 requests
-Completed 300 requests
-Completed 400 requests
 Completed 500 requests
-Completed 600 requests
-Completed 700 requests
-Completed 800 requests
-Completed 900 requests
 Completed 1000 requests
-Finished 1000 requests
-
-
-Server Software:        nginx/1.13.7
-Server Hostname:        127.0.0.1
-Server Port:            8080
-
-Document Path:          /
-Document Length:        37 bytes
-
-Concurrency Level:      100
-Time taken for tests:   1.959 seconds
-Complete requests:      1000
-Failed requests:        620
-   (Connect: 0, Receive: 0, Length: 620, Exceptions: 0)
-Total transferred:      195240 bytes
-HTML transferred:       38240 bytes
-Requests per second:    510.46 [#/sec] (mean)
-Time per request:       195.903 [ms] (mean)
-Time per request:       1.959 [ms] (mean, across all concurrent requests)
-Transfer rate:          97.33 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        0   14  15.2     11     201
-Processing:     1  140 113.1    123     537
-Waiting:        1  140 113.0    123     537
-Total:          1  154 114.1    134     548
-
-Percentage of the requests served within a certain time (ms)
-  50%    134
-  66%    183
-  75%    233
-  80%    246
-  90%    331
-  95%    358
-  98%    431
-  99%    456
- 100%    548 (longest request)
-killing all running webservers...
-./get_data.sh: line 77: 86958 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 77: 86959 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 77: 86961 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86956 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86957 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86960 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86963 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86964 Terminated: 15          ./app -name $x -port 808$x
-stopping nginx...
-done.
-generating nginx.conf...
-launching nginx...
-testing nginx configuration...
-nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
-nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-launching 8 servers...
-./app -name 1 -port 8081 &
-./app -name 2 -port 8082 &
-./app -name 3 -port 8083 &
-./app -name 4 -port 8084 &
-./app -name 5 -port 8085 &
-./app -name 6 -port 8086 &
-./app -name 7 -port 8087 &
-./app -name 8 -port 8088 &
-Benchmarking to ab_data/two_choices//two_choices.tsv...
-This is ApacheBench, Version 2.3 <$Revision: 1796539 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking 127.0.0.1 (be patient)
-Completed 100 requests
-Completed 200 requests
-Completed 300 requests
-Completed 400 requests
-Completed 500 requests
-Completed 600 requests
-Completed 700 requests
-Completed 800 requests
-Completed 900 requests
-Completed 1000 requests
-Finished 1000 requests
-
-
-Server Software:        nginx/1.13.7
-Server Hostname:        127.0.0.1
-Server Port:            8080
-
-Document Path:          /
-Document Length:        37 bytes
-
-Concurrency Level:      100
-Time taken for tests:   2.090 seconds
-Complete requests:      1000
-Failed requests:        602
-   (Connect: 0, Receive: 0, Length: 602, Exceptions: 0)
-Total transferred:      195204 bytes
-HTML transferred:       38204 bytes
-Requests per second:    478.47 [#/sec] (mean)
-Time per request:       208.997 [ms] (mean)
-Time per request:       2.090 [ms] (mean, across all concurrent requests)
-Transfer rate:          91.21 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        7   19   6.6     18      57
-Processing:    21  154 104.6    147     645
-Waiting:       21  154 104.6    147     645
-Total:         38  173 105.5    164     659
-
-Percentage of the requests served within a certain time (ms)
-  50%    164
-  66%    182
-  75%    258
-  80%    268
-  90%    321
-  95%    365
-  98%    451
-  99%    478
- 100%    659 (longest request)
-killing all running webservers...
-./get_data.sh: line 78: 86986 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86987 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86988 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86989 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86990 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86991 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86993 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 78: 86994 Terminated: 15          ./app -name $x -port 808$x
-stopping nginx...
-done.
-plotting all data files...
-saved /Users/schwa/Desktop/capstone/simulations/plots/A/nginx-1511735431.png
+Completed 1500 requests
+apr_socket_recv: Connection refused (61)
+Total of 1523 requests completed

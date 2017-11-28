@@ -18,5 +18,6 @@ simulations/plots/*
 !simulations/plots/A
 
 # misc
+nohup.out
 simulations/.ipynb*
 .DS_Store
