@@ -10,7 +10,7 @@ The aim of my research was to investigate the performance of
 innovative load balancing algorithms. This repository contains
 information for running my simulations along with all the source code.
 
-[[file:simulations/plots/interesting.png]]
+| [[file:misc/software_architecture_v1.png]] | [[file:misc/interesting.png]]  |
 
 * Dependencies
 - bash
