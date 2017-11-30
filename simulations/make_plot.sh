@@ -11,11 +11,11 @@ if [ $# -lt 4 ]; then
     exit 1
 fi
 
+nginx_plt="$DIR/nginx-$(date +%s).png"
+
 ################################################################################
 
-echo "plotting all data files..."
-
-plt="$DIR/nginx-$(date +%s).png"
+echo "plotting all nginx data files..."
 
 # turn gnuplot x-axis to percentage
 xval="((\$0/"$REQ")*100)"
@@ -33,15 +33,15 @@ gnuplot <<EOF
     set ylabel "Response Time for Completion (ms)"
 
     set datafile separator '\t'
-    set output "$plt"
+    set output "$nginx_plt"
 
-    plot "ab_data/control/control.tsv" every ::2 using $xval:5 title "control" with lines, \
-    "ab_data/round_robin/round_robin.tsv" every ::2 using $xval:5 title "round_robin" with lines, \
-    "ab_data/least_conn/least_conn.tsv" every ::2 using $xval:5 title "least_conn" with lines, \
-    "ab_data/random/random.tsv" every ::2 using $xval:5 title "random" with lines, \
-    "ab_data/two_choices/two_choices.tsv" every ::2 using $xval:5 title "two_choices" with lines
+    plot "ab_data/data/control/control.tsv" every ::2 using $xval:5 title "control" with lines, \
+    "ab_data/data/round_robin/round_robin.tsv" every ::2 using $xval:5 title "round_robin" with lines, \
+    "ab_data/data/least_conn/least_conn.tsv" every ::2 using $xval:5 title "least_conn" with lines, \
+    "ab_data/data/random/random.tsv" every ::2 using $xval:5 title "random" with lines, \
+    "ab_data/data/two_choices/two_choices.tsv" every ::2 using $xval:5 title "two_choices" with lines
     
     unset output
 EOF
 
-echo "saved $plt"
+echo "saved $nginx_plt"
