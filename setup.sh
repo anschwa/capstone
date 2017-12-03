@@ -76,8 +76,10 @@ echo "Benchmarking two_choices..."
 
 ################################################################################
 
-echo "Creating plot in '$PLOT_DIR'..."
+echo "Creating ab and stats plot in '$PLOT_DIR'..."
 ./make_plot.sh "$SERVERS" "$REQUESTS" "$CONCURRENT" "$PLOT_DIR" &>> "$log" || error
+
+./make_box_plot.sh "$SERVERS" "$REQUESTS" "$CONCURRENT" "$PLOT_DIR" &>> "$log" || error
 
 ################################################################################
 

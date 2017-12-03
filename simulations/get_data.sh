@@ -20,15 +20,15 @@ NGINX="/usr/local/nginx/conf/nginx.conf"
 REQUESTS=$3
 CONCURRENT=$4
 
-DATA_DIR="ab_data/data/$ALGORITHM/"
-STATS_DIR="ab_data/stats/"
+DATA_DIR="data/ab/"
+STATS_DIR="data/stats/"
 
 mkdir -p "$DATA_DIR"
 mkdir -p "$STATS_DIR"
 
 # create data file directories
 for x in random round_robin least_conn two_choices control; do
-    mkdir -p "ab_data/data/$x"
+    mkdir -p "data/ab/$x"
 done
 
 ################################################################################
@@ -62,26 +62,29 @@ done
 ################################################################################
 
 # use apache bench to benchmark server performance
-ab_tsv="$DATA_DIR/$ALGORITHM.tsv"
-tsv_archive="$DATA_DIR/$ALGORITHM-$(date +%s).tsv"
-
+ab_data="$DATA_DIR/$ALGORITHM.tsv"
 ab_stats="$STATS_DIR/$ALGORITHM.tsv"
 
-# initialize this file if it doesn't exist
+# clear out old trial data
+if [ -e "$ab_data" ]; then
+    rm "$ab_data"
+fi
+
+if [ -e "$ab_stats" ]; then
+    rm "$ab_stats"
+fi
+
+# create new ab stats file
 if [ ! -e "$ab_stats" ]; then
-    printf "min\tmean\t[+/-sd]\tmedian\tmax\n" > "$ab_stats"
+    printf "requests\tconcurrent\tmin\tmean\t[+/-sd]\tmedian\tmax\n" > "$ab_stats"
 fi
 
-# archive old trials by renaming before new data is created
-if [ -e "$ab_tsv" ]; then
-    mv "$ab_tsv" "$tsv_archive"
-fi
-
-echo "Benchmarking $ALGORITHM to $ab_tsv."
+echo "Benchmarking $ALGORITHM to $ab_data."
 echo "Redirecting ab to $ab_stats..."
 sleep 2
 
-ab -n $REQUESTS -c $CONCURRENT -g "$ab_tsv" http://127.0.0.1:8080/ | ./ab_parse.py >> "$ab_stats" || exit 1
+ab -n $REQUESTS -c $CONCURRENT -g "$ab_data" http://127.0.0.1:8080/ | \
+ ./parse_ab.py "$REQUESTS" "$CONCURRENT" >> "$ab_stats" || exit 1
 
 ################################################################################
 

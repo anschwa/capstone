@@ -8,8 +8,10 @@ simulations/app
 src/server/app
 
 # ignore simulation files
-simulations/ab_data/*/*-*.tsv
+simulations/data/ab/*/*-*.tsv
 simulations/logs/simulation-*.log
+
+simulations/plots/tmp/*
 
 # misc
 nohup.out

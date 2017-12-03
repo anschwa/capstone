@@ -35,11 +35,11 @@ gnuplot <<EOF
     set datafile separator '\t'
     set output "$nginx_plt"
 
-    plot "ab_data/data/control/control.tsv" every ::2 using $xval:5 title "control" with lines, \
-    "ab_data/data/round_robin/round_robin.tsv" every ::2 using $xval:5 title "round_robin" with lines, \
-    "ab_data/data/least_conn/least_conn.tsv" every ::2 using $xval:5 title "least_conn" with lines, \
-    "ab_data/data/random/random.tsv" every ::2 using $xval:5 title "random" with lines, \
-    "ab_data/data/two_choices/two_choices.tsv" every ::2 using $xval:5 title "two_choices" with lines
+    plot "data/ab/control.tsv" every ::2 using $xval:5 title "control" with lines, \
+    "data/ab/round_robin.tsv" every ::2 using $xval:5 title "round_robin" with lines, \
+    "data/ab/least_conn.tsv" every ::2 using $xval:5 title "least_conn" with lines, \
+    "data/ab/random.tsv" every ::2 using $xval:5 title "random" with lines, \
+    "data/ab/two_choices.tsv" every ::2 using $xval:5 title "two_choices" with lines
     
     unset output
 EOF

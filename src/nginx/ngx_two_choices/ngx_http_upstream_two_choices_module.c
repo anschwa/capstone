@@ -19,18 +19,6 @@ static ngx_http_upstream_rr_peer_t *ngx_http_upstream_get_rand_peer(
     ngx_peer_connection_t *pc, void *data);
 
 
-/* I'm using peers->number instead */
-typedef struct {
-    ngx_int_t npeers;
-    ngx_int_t naddrs;
-} ngx_http_upstream_two_choices_peer_info_t;
-
-static ngx_http_upstream_two_choices_peer_info_t peer_info = {
-    0,
-    0
-};
-
-
 static ngx_command_t  ngx_http_upstream_two_choices_commands[] = {
 
     { ngx_string("two_choices"),
@@ -79,8 +67,6 @@ static ngx_int_t
 ngx_http_upstream_init_two_choices(ngx_conf_t *cf,
                               ngx_http_upstream_srv_conf_t *us)
 {
-    ngx_http_upstream_server_t *server;
-
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, cf->log, 0,
                    "init two_choices");
 
@@ -89,17 +75,6 @@ ngx_http_upstream_init_two_choices(ngx_conf_t *cf,
     }
 
     us->peer.init = ngx_http_upstream_init_two_choices_peer;
-
-    /* store important peer information from upstream sever config */
-    server = us->servers->elts;
-    peer_info.npeers = us->servers->nelts;
-    peer_info.naddrs = server[0].naddrs;
-
-    ngx_log_debug1(NGX_LOG_DEBUG_HTTP, cf->log, 0,
-                   "num peers = %d", peer_info.npeers);
-
-    ngx_log_debug2(NGX_LOG_DEBUG_HTTP, cf->log, 0,
-                   "num addrs = %d", 0, server[0].naddrs);
 
     return NGX_OK;
 }
@@ -130,7 +105,10 @@ ngx_http_upstream_get_two_choices_peer(ngx_peer_connection_t *pc, void *data)
     ngx_http_upstream_rr_peer_t       *peer, *best;
     ngx_http_upstream_rr_peers_t      *peers;
 
-    if (rrp->peers->single) {
+    peers = rrp->peers;
+
+    /* if there's only one peer, no need to load balance */
+    if (peers->single || peers->number / 3 == 1) {
         ngx_log_debug0(NGX_LOG_DEBUG_HTTP, pc->log, 0,
                        "get two_choices peer, single rr");
         return ngx_http_upstream_get_round_robin_peer(pc, rrp);
@@ -140,7 +118,6 @@ ngx_http_upstream_get_two_choices_peer(ngx_peer_connection_t *pc, void *data)
      * first select two random peers, then choose the one with the least load
      */
 
-    peers = rrp->peers;
     ngx_http_upstream_rr_peers_wlock(peers);
     
     /* for simplicity, assume that choice one is best */
@@ -148,8 +125,8 @@ ngx_http_upstream_get_two_choices_peer(ngx_peer_connection_t *pc, void *data)
     peer = ngx_http_upstream_get_rand_peer(pc, rrp);
 
     if (best == NULL || peer == NULL) {
-        ngx_log_debug0(NGX_LOG_DEBUG_HTTP, pc->log, 0,
-                       "get two_choices peer, no peer found");
+        ngx_log_debug1(NGX_LOG_DEBUG_HTTP, pc->log, 0,
+                       "get two_choices peer, no peer found, %d", peers->number);
         goto failed;
     }
 
