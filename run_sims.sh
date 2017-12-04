@@ -13,7 +13,7 @@ function run_sim {
 
 # this should be enough data to draw some conclusions from
 SIM_DIR="$HOME/Desktop/capstone/simulations/"
-PLOT_DIR="$SIM_DIR/plots/C/"
+PLOT_DIR="$SIM_DIR/plots/D/"
 
 for req in 500 1000 4000; do
     for con in 10 50 100; do

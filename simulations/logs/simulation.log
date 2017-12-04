@@ -23,7 +23,7 @@ Completed 4000 requests
 Finished 4000 requests
 killing all running webservers...
 stopping nginx...
-./get_data.sh: line 95: 28746 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 95: 39449 Terminated: 15          ./app -name $x -port 808$x
 done.
 generating nginx.conf...
 launching nginx...
@@ -44,140 +44,12 @@ Redirecting ab to data/stats//round_robin.tsv...
 Completed 400 requests
 Completed 800 requests
 Completed 1200 requests
-Completed 1600 requests
-Completed 2000 requests
-Completed 2400 requests
-Completed 2800 requests
-Completed 3200 requests
-Completed 3600 requests
-Completed 4000 requests
-Finished 4000 requests
-killing all running webservers...
-./get_data.sh: line 93: 28780 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28781 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28782 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28783 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28784 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28786 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28787 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28788 Terminated: 15          ./app -name $x -port 808$x
-stopping nginx...
-done.
-generating nginx.conf...
-launching nginx...
-testing nginx configuration...
-nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
-nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-launching 8 servers...
-./app -name 1 -port 8081 &
-./app -name 2 -port 8082 &
-./app -name 3 -port 8083 &
-./app -name 4 -port 8084 &
-./app -name 5 -port 8085 &
-./app -name 6 -port 8086 &
-./app -name 7 -port 8087 &
-./app -name 8 -port 8088 &
-Benchmarking least_conn to data/ab//least_conn.tsv.
-Redirecting ab to data/stats//least_conn.tsv...
-Completed 400 requests
-Completed 800 requests
-Completed 1200 requests
-Completed 1600 requests
-Completed 2000 requests
-Completed 2400 requests
-Completed 2800 requests
-Completed 3200 requests
-Completed 3600 requests
-Completed 4000 requests
-Finished 4000 requests
-killing all running webservers...
-./get_data.sh: line 92: 28833 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 92: 28835 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 92: 28837 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 92: 28838 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28832 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28834 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28836 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28839 Terminated: 15          ./app -name $x -port 808$x
-stopping nginx...
-done.
-generating nginx.conf...
-launching nginx...
-testing nginx configuration...
-nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
-nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-launching 8 servers...
-./app -name 1 -port 8081 &
-./app -name 2 -port 8082 &
-./app -name 3 -port 8083 &
-./app -name 4 -port 8084 &
-./app -name 5 -port 8085 &
-./app -name 6 -port 8086 &
-./app -name 7 -port 8087 &
-./app -name 8 -port 8088 &
-Benchmarking random to data/ab//random.tsv.
-Redirecting ab to data/stats//random.tsv...
-Completed 400 requests
-Completed 800 requests
-Completed 1200 requests
-Completed 1600 requests
-Completed 2000 requests
-Completed 2400 requests
-Completed 2800 requests
-Completed 3200 requests
-Completed 3600 requests
-Completed 4000 requests
-Finished 4000 requests
-killing all running webservers...
-./get_data.sh: line 93: 28877 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28878 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28880 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28881 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28882 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 93: 28884 Terminated: 15          ./app -name $x -port 808$x
-stopping nginx...
-./get_data.sh: line 95: 28879 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 95: 28883 Terminated: 15          ./app -name $x -port 808$x
-done.
-generating nginx.conf...
-launching nginx...
-testing nginx configuration...
-nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
-nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-launching 8 servers...
-./app -name 1 -port 8081 &
-./app -name 2 -port 8082 &
-./app -name 3 -port 8083 &
-./app -name 4 -port 8084 &
-./app -name 5 -port 8085 &
-./app -name 6 -port 8086 &
-./app -name 7 -port 8087 &
-./app -name 8 -port 8088 &
-Benchmarking two_choices to data/ab//two_choices.tsv.
-Redirecting ab to data/stats//two_choices.tsv...
-Completed 400 requests
-Completed 800 requests
-Completed 1200 requests
-Completed 1600 requests
-Completed 2000 requests
-Completed 2400 requests
-Completed 2800 requests
-Completed 3200 requests
-Completed 3600 requests
-Completed 4000 requests
-Finished 4000 requests
-killing all running webservers...
-./get_data.sh: line 93: 28919 Terminated: 15          ./app -name $x -port 808$x
-stopping nginx...
-./get_data.sh: line 95: 28920 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 95: 28921 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 95: 28922 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 95: 28923 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 95: 28924 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 95: 28925 Terminated: 15          ./app -name $x -port 808$x
-./get_data.sh: line 95: 28926 Terminated: 15          ./app -name $x -port 808$x
-done.
-plotting all nginx data files...
-saved /Users/schwa/Desktop/capstone/simulations//plots/B//nginx-1512355423.png
-plotting all ab stat data files...
-saved /Users/schwa/Desktop/capstone/simulations//plots/B//box-1512355423.png
+apr_socket_recv: Operation timed out (60)
+Traceback (most recent call last):
+  File "./parse_ab.py", line 75, in <module>
+    parse(sys.stdin.readlines(), req, con, "Waiting")
+  File "./parse_ab.py", line 67, in parse
+    stats = get_stats(ab)
+  File "./parse_ab.py", line 40, in get_stats
+    raise Exception("ab statistics not found")
+Exception: ab statistics not found
