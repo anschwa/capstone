@@ -71,14 +71,14 @@ fi
 
 # create new ab stats file
 if [ ! -e "$ab_stats" ]; then
-    printf "requests\tconcurrent\tmin\tmean\t[+/-sd]\tmedian\tmax\n" > "$ab_stats"
+    printf "algorithm\trequests\tconcurrent\tmin\tmean\t[+/-sd]\tmedian\tmax\n" > "$ab_stats"
 fi
 
 echo "Benchmarking $ALGORITHM to $ab_data."
 echo "Redirecting ab to $ab_stats..."
 sleep 2
 
-ab -n $REQUESTS -c $CONCURRENT -g "$ab_data" http://127.0.0.1:8080/ | ./parse_ab.py "$REQUESTS" "$CONCURRENT" >> "$ab_stats" || exit 1
+ab -n $REQUESTS -c $CONCURRENT -g "$ab_data" http://127.0.0.1:8080/ | ./parse_ab.py "$ALGORITHM" "$REQUESTS" "$CONCURRENT" >> "$ab_stats" || exit 1
 
 ################################################################################
 

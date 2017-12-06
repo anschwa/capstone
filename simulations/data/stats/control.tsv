@@ -1,0 +1,3 @@
+algorithm	requests	concurrent	min	mean	[+/-sd]	median	max
+control	100	10	1	111	118.3	102	602
+control	100	10	1	112	109.0	103	608

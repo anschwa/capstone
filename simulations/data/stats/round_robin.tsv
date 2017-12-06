@@ -1,0 +1,3 @@
+algorithm	requests	concurrent	min	mean	[+/-sd]	median	max
+round_robin	100	10	0	110	121.2	102	505
+round_robin	100	10	1	122	101.9	105	401

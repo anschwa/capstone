@@ -1,0 +1,3 @@
+algorithm	requests	concurrent	min	mean	[+/-sd]	median	max
+least_conn	100	10	1	106	115.2	102	501
+least_conn	100	10	1	120	105.4	105	514

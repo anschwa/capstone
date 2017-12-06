@@ -53,7 +53,7 @@ def get_data(stats):
     return data
 
 
-def parse(ab, req, con, stat_opt="Total"):
+def parse(ab, alg, req, con, stat_opt="Total"):
     """Parse the output of Apache Bench and
     format the statistics into a tsv
     """
@@ -67,9 +67,10 @@ def parse(ab, req, con, stat_opt="Total"):
     stats = get_stats(ab)
     data = get_data(stats)
 
-    print("{}\t{}\t{}".format(req, con, data[stat_opt]))
+    print("{}\t{}\t{}\t{}".format(alg, req, con, data[stat_opt]))
 
 if __name__ == "__main__":
-    req = sys.argv[1]
-    con = sys.argv[2]
-    parse(sys.stdin.readlines(), req, con, "Waiting")
+    alg = sys.argv[1]
+    req = sys.argv[2]
+    con = sys.argv[3]
+    parse(sys.stdin.readlines(), alg, req, con, "Waiting")

@@ -41,11 +41,11 @@ $SER servers, $REQ requests, and $CON concurrent connections"
 
     # xlabel:median:min:median:max
     # ab doesn't provide quartiles, but we can plot min, mean, max this way
-    plot "data/stats/control.tsv" every ::1 using (1):4:3:7:4 notitle with candlesticks, \
-    "data/stats/round_robin.tsv" every ::1 using (2):4:3:7:4 notitle with candlesticks, \
-    "data/stats/least_conn.tsv" every ::1 using (3):4:3:7:4 notitle with candlesticks, \
-    "data/stats/random.tsv" every ::1 using (4):4:3:7:4 notitle with candlesticks, \
-    "data/stats/two_choices.tsv" every ::1 using (5):4:3:7:4 notitle with candlesticks
+    plot "data/stats/control.tsv" every ::1 using (1):5:4:8:5 notitle with candlesticks, \
+    "data/stats/round_robin.tsv" every ::1 using (2):5:4:8:5 notitle with candlesticks, \
+    "data/stats/least_conn.tsv" every ::1 using (3):5:4:8:5 notitle with candlesticks, \
+    "data/stats/random.tsv" every ::1 using (4):5:4:8:5 notitle with candlesticks, \
+    "data/stats/two_choices.tsv" every ::1 using (5):5:4:8:5 notitle with candlesticks
 
     unset output
 EOF
