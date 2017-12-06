@@ -26,11 +26,6 @@ STATS_DIR="data/stats/"
 mkdir -p "$DATA_DIR"
 mkdir -p "$STATS_DIR"
 
-# create data file directories
-for x in random round_robin least_conn two_choices control; do
-    mkdir -p "data/ab/$x"
-done
-
 ################################################################################
 
 echo "generating nginx.conf..."
@@ -70,9 +65,9 @@ if [ -e "$ab_data" ]; then
     rm "$ab_data"
 fi
 
-if [ -e "$ab_stats" ]; then
-    rm "$ab_stats"
-fi
+# if [ -e "$ab_stats" ]; then
+#     rm "$ab_stats"
+# fi
 
 # create new ab stats file
 if [ ! -e "$ab_stats" ]; then
@@ -83,8 +78,7 @@ echo "Benchmarking $ALGORITHM to $ab_data."
 echo "Redirecting ab to $ab_stats..."
 sleep 2
 
-ab -n $REQUESTS -c $CONCURRENT -g "$ab_data" http://127.0.0.1:8080/ | \
- ./parse_ab.py "$REQUESTS" "$CONCURRENT" >> "$ab_stats" || exit 1
+ab -n $REQUESTS -c $CONCURRENT -g "$ab_data" http://127.0.0.1:8080/ | ./parse_ab.py "$REQUESTS" "$CONCURRENT" >> "$ab_stats" || exit 1
 
 ################################################################################
 

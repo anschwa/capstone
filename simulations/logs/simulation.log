@@ -23,7 +23,7 @@ Completed 4000 requests
 Finished 4000 requests
 killing all running webservers...
 stopping nginx...
-./get_data.sh: line 95: 39449 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 89: 99571 Terminated: 15          ./app -name $x -port 808$x
 done.
 generating nginx.conf...
 launching nginx...
@@ -44,12 +44,140 @@ Redirecting ab to data/stats//round_robin.tsv...
 Completed 400 requests
 Completed 800 requests
 Completed 1200 requests
-apr_socket_recv: Operation timed out (60)
-Traceback (most recent call last):
-  File "./parse_ab.py", line 75, in <module>
-    parse(sys.stdin.readlines(), req, con, "Waiting")
-  File "./parse_ab.py", line 67, in parse
-    stats = get_stats(ab)
-  File "./parse_ab.py", line 40, in get_stats
-    raise Exception("ab statistics not found")
-Exception: ab statistics not found
+Completed 1600 requests
+Completed 2000 requests
+Completed 2400 requests
+Completed 2800 requests
+Completed 3200 requests
+Completed 3600 requests
+Completed 4000 requests
+Finished 4000 requests
+killing all running webservers...
+./get_data.sh: line 87: 99601 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99602 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99603 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99604 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99605 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99606 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99607 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99608 Terminated: 15          ./app -name $x -port 808$x
+stopping nginx...
+done.
+generating nginx.conf...
+launching nginx...
+testing nginx configuration...
+nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
+launching 8 servers...
+./app -name 1 -port 8081 &
+./app -name 2 -port 8082 &
+./app -name 3 -port 8083 &
+./app -name 4 -port 8084 &
+./app -name 5 -port 8085 &
+./app -name 6 -port 8086 &
+./app -name 7 -port 8087 &
+./app -name 8 -port 8088 &
+Benchmarking least_conn to data/ab//least_conn.tsv.
+Redirecting ab to data/stats//least_conn.tsv...
+Completed 400 requests
+Completed 800 requests
+Completed 1200 requests
+Completed 1600 requests
+Completed 2000 requests
+Completed 2400 requests
+Completed 2800 requests
+Completed 3200 requests
+Completed 3600 requests
+Completed 4000 requests
+Finished 4000 requests
+killing all running webservers...
+./get_data.sh: line 87: 99638 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99639 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99640 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99641 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99642 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99643 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99644 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99645 Terminated: 15          ./app -name $x -port 808$x
+stopping nginx...
+done.
+generating nginx.conf...
+launching nginx...
+testing nginx configuration...
+nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
+launching 8 servers...
+./app -name 1 -port 8081 &
+./app -name 2 -port 8082 &
+./app -name 3 -port 8083 &
+./app -name 4 -port 8084 &
+./app -name 5 -port 8085 &
+./app -name 6 -port 8086 &
+./app -name 7 -port 8087 &
+./app -name 8 -port 8088 &
+Benchmarking random to data/ab//random.tsv.
+Redirecting ab to data/stats//random.tsv...
+Completed 400 requests
+Completed 800 requests
+Completed 1200 requests
+Completed 1600 requests
+Completed 2000 requests
+Completed 2400 requests
+Completed 2800 requests
+Completed 3200 requests
+Completed 3600 requests
+Completed 4000 requests
+Finished 4000 requests
+killing all running webservers...
+./get_data.sh: line 87: 99675 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99676 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99677 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99678 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99679 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99680 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99681 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99682 Terminated: 15          ./app -name $x -port 808$x
+stopping nginx...
+done.
+generating nginx.conf...
+launching nginx...
+testing nginx configuration...
+nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
+launching 8 servers...
+./app -name 1 -port 8081 &
+./app -name 2 -port 8082 &
+./app -name 3 -port 8083 &
+./app -name 4 -port 8084 &
+./app -name 5 -port 8085 &
+./app -name 6 -port 8086 &
+./app -name 7 -port 8087 &
+./app -name 8 -port 8088 &
+Benchmarking two_choices to data/ab//two_choices.tsv.
+Redirecting ab to data/stats//two_choices.tsv...
+Completed 400 requests
+Completed 800 requests
+Completed 1200 requests
+Completed 1600 requests
+Completed 2000 requests
+Completed 2400 requests
+Completed 2800 requests
+Completed 3200 requests
+Completed 3600 requests
+Completed 4000 requests
+Finished 4000 requests
+killing all running webservers...
+./get_data.sh: line 86: 99725 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99723 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99724 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99726 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99727 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99728 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99729 Terminated: 15          ./app -name $x -port 808$x
+./get_data.sh: line 87: 99730 Terminated: 15          ./app -name $x -port 808$x
+stopping nginx...
+done.
+plotting all nginx data files...
+saved /Users/schwa/Desktop/capstone/simulations//plots/E//ab-1512585923.png
+plotting all ab stat data files...
+saved /Users/schwa/Desktop/capstone/simulations//plots/E//stats-1512585924.png
