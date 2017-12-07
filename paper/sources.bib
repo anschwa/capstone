@@ -1,0 +1,307 @@
+@article{mitzenmacher,
+  title = {The Power of Two Choices in Randomized Load Balancing},
+  author = {Mitzenmacher, Michael},
+  journal = {IEEE Transactions on Parallel and Distributed Systems},
+  volume = {12},
+  number = {10},
+  pages = {1094--1104},
+  year = {2001},
+  publisher = {IEEE},
+  annote = {Whereas doing load balancing by selecting a server at
+                  random, simply by choosing two random servers and
+                  selecting the one most likely to be under less load,
+                  overall performance increases exponentially. The
+                  drawback of this algorithm is an increase in
+                  communication overhead between servers. This paper
+                  dives deep into the math, but my main interest is
+                  implementing this algorithm and run it in a
+                  simulated environment, testing it against random and
+                  round-robin. In addition, it would be an interesting
+                  challenge to add an implementation for apache and
+                  nginx.}
+},
+
+@article{richa,
+  title = {The Power of Two Random Choices: A Survey of Techniques and Results},
+  author = {Richa, Andrea W and Mitzenmacher, M and Sitaraman, R},
+  journal = {Combinatorial Optimization},
+  volume = {9},
+  pages = {255--304},
+  year = {2001},
+  annote = {A comprehensive survey of the "power of two choices"
+                  paradigm and its application in load balancing as
+                  well hashing, parallel computing, and others. }
+},
+
+@inproceedings{adler,
+    author = {Micah Adler and Soumen Chakrabarti and Michael Mitzenmacher and Lars Rasmussen},
+    title = {Parallel Randomized Load Balancing},
+    booktitle = {In Symposium on Theory of Computing. ACM},
+    year = {1995},
+    pages = {119--130},
+    annote = {This is another older paper that discusses the
+                  complexity bounds on distributed systems when
+                  addressing the "balls into bins" problem. This paper
+                  draws in Poisson processes and establishes that load
+                  balancing is at its heart a networking problem.}
+},
+
+@incollection{azar,
+  title = {On-line load balancing},
+  author = {Azar, Yossi},
+  booktitle = {Online Algorithms},
+  pages = {178--195},
+  year = {1998},
+  publisher = {Springer},
+  annote = {One of the first papers outlining the challenges of load
+                  balancing on networked servers. The load balancing
+                  problem is very old and has been researched
+                  extensively, but remains a difficult problem to
+                  overcome. This paper sets to survey the elements
+                  that establishes the complexity of load balancing.}
+},
+
+@article{jiq,
+  title = {Join-Idle-Queue: A novel load balancing algorithm for dynamically scalable web services},
+  author = {Lu, Yi and Xie, Qiaomin and Kliot, Gabriel and Geller, Alan and Larus, James R and Greenberg, Albert},
+  journal = {Performance Evaluation},
+  volume = {68},
+  number = {11},
+  pages = {1056--1071},
+  year = {2011},
+  publisher = {Elsevier},
+  annote = {This is the latest and greatest load balancing algorithm.
+                  It was developed by Microsoft and achieves greater
+                  performance than join-shortest-queue and "two
+                  choices" but does not introduce communication
+                  overhead on the servers. This is achieved by only
+                  using local information about server load. This
+                  paper mentions that although work stealing is
+                  efficient in cluster computing, it is not very
+                  applicable for load balancing on web servers as I
+                  initially suspected. The idea behind JIQ is to
+                  "decouple discovery of lightly loaded servers from
+                  job assignment". This is achieved through utilizing
+                  idle CPUs to make the load balancing decision. JIQ
+                  out performs the "competing" advanced load balancing
+                  algorithms while not increasing complexity. It
+                  should be noted that these load balancing strategies
+                  are most noticeable under extremely high server
+                  load.}
+},
+
+@inproceedings{dinan,
+ author = {Dinan, James and Larkins, D. Brian and Sadayappan, P. and Krishnamoorthy, Sriram and Nieplocha, Jarek},
+ title = {Scalable Work Stealing},
+ booktitle = {Proceedings of the Conference on High Performance Computing Networking, Storage and Analysis},
+ series = {SC '09},
+ year = {2009},
+ isbn = {978-1-60558-744-8},
+ location = {Portland, Oregon},
+ pages = {53:1--53:11},
+ articleno = {53},
+ numpages = {11},
+ url = {http://doi.acm.org/10.1145/1654059.1654113},
+ doi = {10.1145/1654059.1654113},
+ acmid = {1654113},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {ARMCI, PGAS, dynamic load balancing, global arrays, task pools, work stealing},
+ annote = {Work stealing is a common approach to improving the
+                  performance of distributed systems, but like load
+                  balancing in web servers, the most popular algorithm
+                  is "an idle CPU chooses queued work from another CPU
+                  at random". This paper investigates more efficient
+                  techniques for scheduling work on shared memory
+                  systems. This paper discusses a method for "lockless
+                  release operations" on work queues by utilizing
+                  special queueing metadata to improve performance.
+                  Similar techniques are discussed to improve the
+                  efficiency of shared memory management. I'm not sure
+                  if this material will relate directly to my project,
+                  but it brings awareness to "levels" / hierarchy of
+                  load balancing in computing (CPU, Memory, Server,
+                  Networks).}
+},
+
+@inproceedings{egress,
+  title = {Engineering Egress with Edge Fabric},
+  author = {Schlinker, Brandon and Kim, Hyojeong and Cui, Timothy and Katz-Bassett, Ethan and Madhyastha, Harsha V and Cunha, Italo and Quinn, James and Hasan, Saif and Lapukhov, Petr and Zeng, Hongyi},
+  booktitle = {Proceedings of the ACM SIGCOMM 2017 Conference (SIGCOMM'17). ACM, New York, NY, USA},
+  year = {2017},
+  annote = {This paper describes a process for evaluating network
+                  latency and congestion through "performance aware
+                  routing" on Facebook's network. This paper explains
+                  some key elements of running a network on a massive
+                  scale that minimizes congestion. What Google did
+                  with TCP congestion, Facebook did with the border
+                  gateway protocol (BGP); they made it "capacity and
+                  performance aware". Essentially, Facebook had to
+                  optimize its point of presence (PoP) servers to have
+                  highly efficient routing algorithms (establishing
+                  shorter paths) to deliver content to its billions of
+                  users. This paper illustrates a common theme that
+                  traditional implementations of networking protocols
+                  are no longer sufficient.}
+},
+
+@article{pingmesh,
+  title = {Pingmesh: A large-scale system for data center network latency measurement and analysis},
+  author = {Guo, Chuanxiong and Yuan, Lihua and Xiang, Dong and Dang, Yingnong and Huang, Ray and Maltz, Dave and Liu, Zhaoyi and Wang, Vin and Pang, Bin and Chen, Hua and others},
+  journal = {ACM SIGCOMM Computer Communication Review},
+  volume = {45},
+  number = {4},
+  pages = {139--152},
+  year = {2015},
+  publisher = {ACM},
+  annote = {Pingmesh is an application developed my Microsoft that
+                  monitors the latency of large scale networks. It is
+                  also mentioned that determining if a problem is
+                  network related or not can be equally challenging.
+                  Pingmesh produces graphs that visualize the health
+                  of a network and can be used to detect the source of
+                  a network problem as well as determine if the
+                  problem is indeed network related. It was found that
+                  the simple network management protocol (SNMP) is not
+                  always a trustworthy source of packet loss
+                  information. My biggest take away was that measuring
+                  network latency is still considered to be an
+                  unsolved problem due to the complexity of modern
+                  networks and the overhead tools like Pingmesh adds
+                  to them.}
+},
+
+@article{nutbolt,
+  title = {Load balancing 101: Nuts and bolts},
+  author = {Salchow, K},
+  journal = {White Paper, F5 Networks, Inc},
+  year = {2007},
+  annote = {An overview of modern load balancing using application
+                  delivery controllers (ADCs). This paper has good
+                  diagrams describing where load balancers are used
+                  and how we interact with them. Brings up two big
+                  questions: How does a load balancer decide which
+                  host to send a connection to? How does a load
+                  balancer monitor the hosts? Most likely this paper
+                  would be used for giving high level descriptions and
+                  introduction to my project.}
+},
+
+@article{bbr,
+  title = {BBR: Congestion-based congestion control},
+  author = {Cardwell, Neal and Cheng, Yuchung and Gunn, C Stephen and Yeganeh, Soheil Hassas and Jacobson, Van},
+  journal = {Queue},
+  volume = {14},
+  number = {5},
+  pages = {50},
+  year = {2016},
+  publisher = {ACM},
+  annote = {BBR stands for Bottleneck Bandwidth and Round-trip
+                  propagation time. It is a new congestion control
+                  algorithm developed and deployed by Google for
+                  increasing the throughput of TCP. The purpose of the
+                  algorithm is to measure the current bottle neck of
+                  the network and only send enough data to "fill the
+                  pipe". The success of the algorithm comes from
+                  measuring network congestion in terms of its
+                  bottleneck and not packet loss, which is how it is
+                  traditionally done. However, it was found that
+                  maximum throughput is achieved when the loss rate
+                  was less than the inverse square of the bandwidth
+                  delay product (BDP). BBR is already implemented in
+                  the Linux kernel for TCP.}
+},
+
+@online{mcmullen,
+  title = "Load Balancing is Impossible",
+  author = "Tyler McMullen",
+  organization = "YouTube",
+  year = "2016",
+  month = "November",
+  url = "https://www.youtube.com/watch?v=gas2v1emubU",
+  annote = {A very informative talk and overview of web server load
+                  balancing. This was my main inspiration for the
+                  project and has a lot of good references.}
+},
+
+@misc{ivanov,
+  title = {Optimizing web servers for high throughput and low latency},
+  url = {https://blogs.dropbox.com/tech/2017/09/optimizing-web-servers-for-high-throughput-and-low-latency/},
+  urldate = {2017-09-12},
+  journal = {Dropbox Tech Blog},
+  author = {Ivanov, Alexey},
+  annote = {An approach to solving the load balancing problem by
+                  optomizing kernel level components rather than
+                  changing your load balancing algorithm.}
+},
+
+@misc{facebooklive,
+  title = {Networking @{Scale}, {May} 2016 — {Recap}},
+  url = {https://code.facebook.com/posts/1036362693099725/networking-scale-may-2016-recap/},
+  urldate = {2017-09-12},
+  journal = {Facebook Code},
+  file = {Snapshot:files/85/networking-scale-may-2016-recap.html:text/html},
+  annote = {A possible approach to solving load balancing is by
+                  predicting when you servers will crash before they
+                  do. This is achived by something called spline
+                  interpolation, which scypi has models for. This
+                  makes it seem worthwhile to investigate further.}
+},
+
+@misc{apnic,
+  title = {{BBR}, the new kid on the {TCP} block},
+  url = {https://blog.apnic.net/2017/05/09/bbr-new-kid-tcp-block/},
+  urldate = {2017-09-12},
+  journal = {APNIC Blog},
+  month = may,
+  year = {2017},
+  annote = {Another, more highlevel description of Googles amazing BBR algorithm.}
+},
+
+@book{sre,
+  title = {Site Reliability Engineering: How Google Runs Production Systems},
+  author  = {Betsy Beyer and Chris Jones and Jennifer Petoff and Niall Richard Murphy},
+  year  = 2016,
+  url = {https://landing.google.com/sre/book/chapters/addressing-cascading-failures.html#xref_cascading-failure_load-shed-graceful-degredation},
+  note = "Load Shedding and Graceful Degradation",
+  annote = {Google's massive book on systems reliablity. This
+                  particular section covers load shedding and the
+                  importantce and nuance of request limmiting. This is
+                  undoubtably a usefull resource for this project.}
+},
+
+@article{keightley,
+  title = {The distribution of mutation effects on viability in Drosophila melanogaster.},
+  author = {Keightley, Peter D},
+  journal = {Genetics},
+  volume = {138},
+  number = {4},
+  pages = {1315--1322},
+  year = {1994},
+  publisher = {Genetics Soc America}
+},
+
+@article{ipython,
+  Author    = {P\'erez, Fernando and Granger, Brian E.},
+  Title     = {{IP}ython: a System for Interactive Scientific Computing},
+  Journal   = {Computing in Science and Engineering},
+  Volume    = {9},
+  Number    = {3},
+  Pages     = {21--29},
+  month     = may,
+  year      = 2007,
+  url       = "http://ipython.org",
+  ISSN      = "1521-9615",
+  doi       = {10.1109/MCSE.2007.53},
+  publisher = {IEEE Computer Society},
+},
+
+@article{epoll,
+  Author    = {Marek Majkowski},
+  Title     = {Why does one NGINX worker take all the load?},
+  Journal   = {CloudFlare},
+  month     = oct,
+  year      = 2017,
+  url       = "https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/",
+},
+

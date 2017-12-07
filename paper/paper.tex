@@ -1,0 +1,48 @@
+\documentclass[sigconf]{acmart}
+
+% remove conference information and other stuff
+\settopmatter{printacmref=false} % Removes citation information below abstract
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+\pagestyle{plain} % removes running headers
+
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} % For formal tables
+\usepackage{caption}
+\usepackage{underscore}
+
+\begin{document}
+\title{Bringing Innovative Load Balancing to NGINX}
+
+\author{Adam Schwartz}
+\affiliation{\institution{Earlham College}}
+\email{anschwa14@earlham.edu}
+
+% The default list of authors is too long for headers}
+\renewcommand{\shortauthors}{A. Schwartz}
+% monospace type for text such as `example` in markdown
+\newcommand{\code}[1]{\texttt{#1}}
+
+\begin{abstract}
+Load balancing remains an important area of study in computer science
+largely due to the increasing demand on data centers and webservers.
+However, it is rare to see improvements in load balancing algorithms
+implemented outside of expensive specialized hardware. This research
+project is an attempt to bring these innovative techniques to NGINX,
+the industry leading open source load balancer and webserver.
+
+In addition to implementing a new, native NGINX module, I have
+developed a simple workflow to benchmark and compare the performance
+of available load balancing algorithms in any given production
+environment. My benchmarks indicate that it is possible to take
+advantage of more sophisticated load distribution techniques without
+paying a significant performance cost in additional overhead.
+\end{abstract}
+
+\maketitle
+
+\input{body}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sources} 
+
+\end{document}

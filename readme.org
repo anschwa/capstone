@@ -66,3 +66,4 @@ pkill -f "./app -name"  # be careful with using pkill -f
 - [[file:simulations/][Simulations]]
 - [[file:src/nginx/][Nginx Modules]]
 - [[file:src/server/][Go Webserver]]
+- [[file:paper/][Research Paper]]

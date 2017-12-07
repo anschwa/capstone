@@ -1,0 +1,20 @@
+#+TITLE: Research Paper
+#+AUTHOR: Adam Schwartz
+#+DATE: December  7, 2017
+#+OPTIONS: ':true *:true toc:nil num:nil
+
+* Compiling LaTeX
+** Generate PDF
+#+BEGIN_SRC text
+latexmk -pdf paper.tex
+#+END_SRC
+
+** Regenerate and view PDF every time you make a change
+#+BEGIN_SRC text
+latexmk -pdf -pvc paper.tex
+#+END_SRC
+
+** Clean out LaTeX garbage
+#+BEGIN_SRC text
+latexmk -c  # -C gets rid of everything except the .tex and .bib sources
+#+END_SRC
